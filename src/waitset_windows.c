@@ -23,7 +23,7 @@
 #include "ofc/fs.h"
 #include "ofc/file.h"
 
-#include "ofc_linux/fs_linux.h"
+#include "ofc_windows/fs_windows.h"
 
 /**
  * \defgroup waitset_windows Windows Dependent Scheduler Handling
@@ -50,11 +50,6 @@ OFC_VOID ofc_waitset_destroy_impl(WAIT_SET *pWaitSet)
     }
 }
 
-OFC_VOID ofc_waitset_signal_impl(OFC_HANDLE handle, OFC_HANDLE hEvent)
-{
-  ofc_waitset_wake_impl (handle) ;
-}
-
 OFC_VOID ofc_waitset_wake_impl(OFC_HANDLE handle)
 {
   WAIT_SET *pWaitSet ;
@@ -69,6 +64,11 @@ OFC_VOID ofc_waitset_wake_impl(OFC_HANDLE handle)
 	SetEvent (win32WakeHandle) ;
       ofc_handle_unlock (handle) ;
     }
+}
+
+OFC_VOID ofc_waitset_signal_impl(OFC_HANDLE handle, OFC_HANDLE hEvent)
+{
+  ofc_waitset_wake_impl (handle) ;
 }
 
 OFC_HANDLE ofc_waitset_wait_impl(OFC_HANDLE handle)
@@ -87,7 +87,7 @@ OFC_HANDLE ofc_waitset_wait_impl(OFC_HANDLE handle)
   DWORD leastWait ;
   DWORD wait_index ;
   OFC_MSTIME wait_time ;
-  OFC_FS_TYPE fsType ;
+  OFC_FST_TYPE fsType ;
   OFC_HANDLE hEvent ;
   OFC_HANDLE hMsgQ ;
 

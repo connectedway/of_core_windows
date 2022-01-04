@@ -3,6 +3,7 @@
  * Attribution-NoDerivatives 4.0 International license that can be
  * found in the LICENSE file.
  */
+#define UNICODE
 #include <windows.h>
 
 #include "ofc/types.h"
@@ -11,7 +12,6 @@
 
 #include "ofc/heap.h"
 
-static const char *env2str[OFC_ENV_NUM] =
 static LPCTSTR env2str[OFC_ENV_NUM] =
   {
     TSTR("OPEN_FILES_HOME"),

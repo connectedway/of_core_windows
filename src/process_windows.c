@@ -5,6 +5,7 @@
  */
 #define __OFC_CORE_DLL
 
+#define UNICODE
 #include <windows.h>
 
 #include "ofc/types.h"
@@ -12,6 +13,7 @@
 #include "ofc/process.h"
 #include "ofc/libc.h"
 #include "ofc/thread.h"
+#include "ofc/file.h"
 
 #include "ofc/impl/consoleimpl.h"
 

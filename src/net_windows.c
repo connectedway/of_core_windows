@@ -18,6 +18,7 @@
 #include "ofc/heap.h"
 #include "ofc/net.h"
 #include "ofc/net_internal.h"
+#include "ofc/file.h"
 #include "ofc_windows/config.h"
 
 /**
@@ -311,14 +312,14 @@ OFC_VOID ofc_net_resolve_dns_name_impl(OFC_LPCSTR name,
 
   ofc_memset ((OFC_VOID *)&hints, 0, sizeof (hints)) ;
 
-#if defined(OFC_PARAM_DISCOVER_IPV6)
-#if defined(OFC_PARAM_DISCOVER_IPV4)
+#if defined(OFC_DISCOVER_IPV6)
+#if defined(OFC_DISCOVER_IPV4)
   hints.ai_family = AF_UNSPEC ;
 #else
   hints.ai_family = AF_INET6 ;
 #endif
 #else
-#if defined(OFC_PARAM_DISCOVER_IPV4)
+#if defined(OFC_DISCOVER_IPV4)
   hints.ai_family = AF_INET ;
 #else
 #error "Neither IPv4 nor IPv6 Configured"

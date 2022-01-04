@@ -32,9 +32,9 @@ OFC_VOID OfcFSWindowsStartup(OFC_VOID);
 
 OFC_VOID OfcFSWindowsShutdown(OFC_VOID);
 
-OFC_HANDLE OfcFSWindowsGetHandle(OFC_HANDLE);
+HANDLE OfcFSWindowsGetHandle(OFC_HANDLE);
 
-OFC_HANDLE OfcFSWindowsGetOverlappedEvent(OFC_HANDLE hOverlapped);
+HANDLE OfcFSWindowsGetOverlappedEvent(OFC_HANDLE hOverlapped);
 
 #if defined(__cplusplus)
 }

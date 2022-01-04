@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.21.1)
-project(of_core_linux VERSION 1.0.1 DESCRIPTION "OpenFiles Platform for Linux")
+cmake_minimum_required(VERSION 3.20.0)
+project(of_core_windows VERSION 1.0.1 DESCRIPTION "OpenFiles Platform for Linux")
 
 include(configs/default)
 configure_file(include/ofc_windows/config.h.in ofc_windows/config.h @ONLY)

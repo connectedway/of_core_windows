@@ -409,7 +409,7 @@ OFC_BOOL ofc_socket_impl_reuse_addr(OFC_HANDLE hSocket, OFC_BOOL onoff)
   sock = ofc_handle_lock(hSocket) ;
   if (sock != OFC_NULL)
     {
-      on = (onoff == BLUE_TRUE ? TRUE : FALSE) ;
+      on = (onoff == OFC_TRUE ? TRUE : FALSE) ;
       status = setsockopt(sock->socket, SOL_SOCKET, SO_REUSEADDR, 
 			  (const char *) &on, sizeof(on));
       if (status != SOCKET_ERROR)
@@ -699,19 +699,6 @@ HANDLE ofc_socket_get_win32_handle (OFC_HANDLE hSocket)
       ofc_handle_unlock (hSocket) ;
     }
   return (handle) ;
-}
-
-OFC_VOID ofc_socket_impl_set_event(OFC_HANDLE hSocket,
-                                   OFC_UINT16 revents)
-{
-  OFC_SOCKET_IMPL *pSocket ;
-
-  pSocket = ofc_handle_lock(hSocket) ;
-  if (pSocket != OFC_NULL)
-    {
-      pSocket->revents = revents ;
-      ofc_handle_unlock(hSocket) ;
-    }
 }
 
 OFC_SOCKET_EVENT_TYPE ofc_socket_impl_test(OFC_HANDLE hSocket)
