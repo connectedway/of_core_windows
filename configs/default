@@ -1,0 +1,1 @@
+set(OFC_MAX_NETWORK_INTERFACES "10" CACHE STRING "Maximun Network Interfaces")
