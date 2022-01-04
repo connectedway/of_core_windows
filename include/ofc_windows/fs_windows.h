@@ -23,18 +23,18 @@ extern "C"
 {
 #endif
 
-OFC_VOID OfcFSWindowsDestroyOverlapped(OFC_HANDLE hOverlapped);
+OFC_VOID OfcFSWin32DestroyOverlapped(OFC_HANDLE hOverlapped);
 
 OFC_VOID
-OfcFSWindowsSetOverlappedOffset(OFC_HANDLE hOverlapped, OFC_OFFT offset);
+OfcFSWin32SetOverlappedOffset(OFC_HANDLE hOverlapped, OFC_OFFT offset);
 
-OFC_VOID OfcFSWindowsStartup(OFC_VOID);
+OFC_VOID OfcFSWin32Startup(OFC_VOID);
 
-OFC_VOID OfcFSWindowsShutdown(OFC_VOID);
+OFC_VOID OfcFSWin32Shutdown(OFC_VOID);
 
-HANDLE OfcFSWindowsGetHandle(OFC_HANDLE);
+HANDLE OfcFSWin32GetHandle(OFC_HANDLE);
 
-HANDLE OfcFSWindowsGetOverlappedEvent(OFC_HANDLE hOverlapped);
+HANDLE OfcFSWin32GetOverlappedEvent(OFC_HANDLE hOverlapped);
 
 #if defined(__cplusplus)
 }
