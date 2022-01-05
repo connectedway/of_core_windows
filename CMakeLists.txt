@@ -23,7 +23,7 @@ set(SRCS
         )
 
 add_library(of_core_windows STATIC ${SRCS})
-target_link_libraries(of_core_windows PUBLIC pthread of_core_static)
+target_link_libraries(of_core_windows PUBLIC of_core_static wsock32 ws2_32)
 
 set_target_properties(of_core_windows PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties(of_core_windows PROPERTIES SOVERSION 1)

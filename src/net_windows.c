@@ -225,7 +225,7 @@ OFC_VOID ofc_net_interface_addr_impl(OFC_INT index,
 	      pAddrInet = (SOCKADDR_IN *) &localAddr[index].iiNetmask  ;
 	      pmask->ip_version = OFC_FAMILY_IP ;
 	      pmask->u.ipv4.addr =
-		OFCE_NET_NTOL (&pAddrInet->sin_addr.s_addr, 0) ;
+		OFC_NET_NTOL (&pAddrInet->sin_addr.s_addr, 0) ;
 	    }
 	}
     }

@@ -168,7 +168,7 @@ OFC_HANDLE ofc_waitset_wait_impl(OFC_HANDLE handle)
 				 sizeof (OFC_HANDLE) * (wait_count+1)) ;
 
 	      win32_handle_list[wait_count] = 
-		OfcFSWindowsGetOverlappedEvent (hEventHandle) ;
+		OfcFSWin32GetOverlappedEvent (hEventHandle) ;
 	      ofc_handle_list[wait_count] = hEventHandle ;
 
 	      wait_count++ ;
@@ -213,7 +213,7 @@ OFC_HANDLE ofc_waitset_wait_impl(OFC_HANDLE handle)
 
 		  fsHandle = OfcFileGetFSHandle (hEventHandle) ;
 		  win32_handle_list[wait_count] = 
-		    OfcFSWindowsGetHandle (fsHandle) ;
+		    OfcFSWin32GetHandle (fsHandle) ;
 		  ofc_handle_list[wait_count] = hEventHandle ;
 		  wait_count++ ;
 		}
