@@ -22,9 +22,9 @@ set(SRCS
         src/waitset_windows.c
         )
 
-add_library(of_core_windows STATIC ${SRCS})
-target_link_libraries(of_core_windows PUBLIC of_core_static wsock32 ws2_32)
+add_library(of_core_windows OBJECTS ${SRCS})
+set_property(TARGET of_core_windows PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-set_target_properties(of_core_windows PROPERTIES VERSION ${PROJECT_VERSION})
-set_target_properties(of_core_windows PROPERTIES SOVERSION 1)
+target_link_libraries(of_core_windows PUBLIC wsock32 ws2_32)
+
 
