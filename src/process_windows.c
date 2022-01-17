@@ -137,7 +137,7 @@ OFC_PROCESS_ID ofc_process_get_id_impl (OFC_HANDLE hProcess)
 {
   DWORD pid ;
 
-  pid = (DWORD) ofc_handle_lock (hProcess) ;
+  pid = (DWORD) (OFC_DWORD_PTR) ofc_handle_lock (hProcess) ;
   if (pid != (DWORD) 0)
     ofc_handle_unlock (hProcess) ;
 
@@ -150,7 +150,7 @@ OFC_VOID ofc_process_term_impl(OFC_HANDLE hProcess)
   HANDLE handle ;
   DWORD dwLastError ;
 
-  pid = (DWORD) ofc_handle_lock (hProcess) ;
+  pid = (DWORD) (OFC_DWORD_PTR) ofc_handle_lock (hProcess) ;
 
   if (pid != (DWORD) 0)
     {
