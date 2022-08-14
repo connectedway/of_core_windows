@@ -211,8 +211,23 @@ ofc_thread_init_impl(OFC_VOID)
 }
 
 OFC_CORE_LIB OFC_VOID
-ofc_thred_destroy_impl(OFC_VOID)
+ofc_thread_destroy_impl(OFC_VOID)
 {
+}
+
+OFC_CORE_LIB OFC_VOID
+ofc_thread_detach_impl(OFC_HANDLE hThread)
+{
+  WIN32_THREAD *win32Thread ;
+
+  win32ThreadThread = ofc_handle_lock (hThread) ;
+  if (win32Thread != OFC_NULL)
+    {
+      win32Thread->detachstate = OFC_THREAD_DETACH;
+      CloseHandle (win32Thread->thread) ;
+      win32Thread->thread = NULL ;
+      ofc_handle_unlock(hThread) ;
+    }
 }
 
 /** \} */
