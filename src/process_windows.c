@@ -123,7 +123,7 @@ OFC_HANDLE ofc_process_exec_impl (OFC_CTCHAR *name,
   else
     {
       dwLastError = GetLastError () ;
-      ofc_printf ("Unable to create process %d\n", dwLastError) ;
+      ofc_log (OFC_LOG_WARN, "Unable to create process %d\n", dwLastError) ;
     }
 			      
   ofc_free (tcmdline) ;
@@ -158,7 +158,7 @@ OFC_VOID ofc_process_term_impl(OFC_HANDLE hProcess)
       if (handle == NULL)
 	{
 	  dwLastError = GetLastError () ;
-	  ofc_printf ("Cannot delete process %d\n", dwLastError) ;
+	  ofc_log (OFC_LOG_WARN, "Cannot delete process %d\n", dwLastError) ;
 	}
       else
 	{
@@ -175,11 +175,11 @@ OFC_VOID ofc_process_kill_impl(OFC_PROCESS_ID pid) {
 
   handle = OpenProcess (PROCESS_TERMINATE, FALSE, pid) ;
   if (handle == NULL)
-    ofc_printf ("Cannot delete process\n") ;
+    ofc_log (OFC_LOG_WARN, "Cannot delete process\n") ;
   else
     {
       if (TerminateProcess (handle, 0) == 0)
-	ofc_printf ("Terminate Process Failed with %d\n", 
+	ofc_log (OFC_LOG_WARN, "Terminate Process Failed with %d\n", 
 		     GetLastError());
       else
 	CloseHandle (handle) ;
