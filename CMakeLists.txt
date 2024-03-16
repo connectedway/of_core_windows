@@ -10,6 +10,7 @@ include_directories(
 )
 
 set(SRCS
+        src/backtrace_windows.c
         src/console_windows.c
         src/env_windows.c
         src/event_windows.c
