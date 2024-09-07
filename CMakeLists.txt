@@ -9,6 +9,10 @@ include_directories(
         ${of_core_windows_SOURCE_DIR}/include
 )
 
+if(OFC_FS_PIPE)
+  include_directories(${of_core_fs_pipe_SOURCE_DIR}/include)
+endif()
+
 set(SRCS
         src/backtrace_windows.c
         src/console_windows.c

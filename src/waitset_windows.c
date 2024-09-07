@@ -24,6 +24,9 @@
 #include "ofc/file.h"
 
 #include "ofc_windows/fs_windows.h"
+#if defined(OFC_FS_PIPE)
+#include "of_core_fs_pipe/fs_pipe.h"
+#endif
 
 /**
  * \defgroup waitset_windows Windows Dependent Scheduler Handling
@@ -172,6 +175,27 @@ OFC_HANDLE ofc_waitset_wait_impl(OFC_HANDLE handle)
 	      ofc_handle_list[wait_count] = hEventHandle ;
 
 	      wait_count++ ;
+	      break ;
+
+	    case OFC_HANDLE_FSPIPE_OVERLAPPED:
+#if defined(OFC_FS_PIPE)
+	      /*
+	       * Wait on the event
+	       */
+	      win32_handle_list =
+		ofc_realloc (win32_handle_list,
+				 sizeof (HANDLE) * (wait_count+1)) ;
+	      ofc_handle_list =
+		ofc_realloc (ofc_handle_list,
+				 sizeof (OFC_HANDLE) * (wait_count+1)) ;
+
+	      win32_handle_list[wait_count] =
+		OfcFSPipeGetOverlappedEvent (hEventHandle) ;
+
+	      ofc_handle_list[wait_count] = hEventHandle ;
+
+	      wait_count++ ;
+#endif
 	      break ;
 
 	    case OFC_HANDLE_FSSMB_OVERLAPPED:
