@@ -106,4 +106,18 @@ OFC_VOID ofc_read_password_impl(OFC_CHAR *inbuf, OFC_SIZET len) {
 }
 
 
+OFC_VOID
+ofc_console_set_log_file_impl(OFC_CHAR *log_file,
+			      OFC_LARGE_INTEGER rollover_size,
+			      OFC_UINT max_instance)
+{
+}
+
+OFC_VOID ofc_console_init_impl(OFC_VOID)
+{
+}
+
+OFC_VOID ofc_console_destroy_impl(OFC_VOID)
+{
+}
 /** \} */
